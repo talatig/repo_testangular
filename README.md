@@ -1,4 +1,4 @@
-[demo](https://talatig.github.io/repo_testangular/)
+demo: [https://talatig.github.io/repo_testangular/](https://talatig.github.io/repo_testangular/)
 
 # MyAngularClient
 
