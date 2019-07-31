@@ -1,0 +1,19 @@
+<!-- <h1 mat-dialog-title>Hi {{data.row.Id}}</h1> -->
+<h1 mat-dialog-title>Order Details</h1>
+<div mat-dialog-content>
+  <!-- <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field> -->
+  <p>ID: {{data.row.Id}}</p>
+  <p>ASIN: {{data.row.ASIN}}</p>
+  <p>FNSKU: {{data.row.FNSKU}}</p>
+  <p>Qty: {{data.row.Qty}}</p>
+  <p>Condition: {{data.row.Condition}}</p>
+  <p>Store: {{data.row.Store}}</p>
+  <p>Date: {{data.row.date}}</p>  
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Close</button>
+  <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+</div>

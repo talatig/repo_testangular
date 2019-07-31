@@ -1,0 +1,70 @@
+<ng-template #titleTemplate let-anchor>
+    Order ID
+</ng-template>
+
+<ng-template #template let-anchor>
+    <!-- <span>{{ anchor.nativeElement.innerText }}</span><br/> -->
+    <span>Order ID: {{ gridData.data[anchor.nativeElement.attributes[8].value].Id }}</span><br/>
+    <span>ASIN: {{ gridData.data[anchor.nativeElement.attributes[8].value].ASIN }}</span><br/>
+    <span>FNSKU: {{ gridData.data[anchor.nativeElement.attributes[8].value].FNSKU }}</span><br/>
+    <span>Qty: {{ gridData.data[anchor.nativeElement.attributes[8].value].InStockSupplyQuantity }}</span><br/>
+    <span>Store: {{ gridData.data[anchor.nativeElement.attributes[8].value].Store }}</span><br/>
+    <span>Condition: {{ gridData.data[anchor.nativeElement.attributes[8].value].Condition }}</span><br/>
+    <span>Store: {{ gridData.data[anchor.nativeElement.attributes[8].value].Store }}</span><br/>
+</ng-template>
+
+<div kendoTooltip position="right"
+showOn="none"
+[titleTemplate]="titleTemplate"
+[tooltipTemplate]="template"
+filter=".k-grid td"
+(mouseover)="showTooltip($event)">
+
+<kendo-grid [data]="gridData" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [filter]="state.filter"
+    [sortable]="true" [pageable]="true" [filterable]="true" (dataStateChange)="dataStateChange($event)">
+    <ng-template kendoGridToolbarTemplate>
+        <button type="button" kendoGridExcelCommand icon="file-excel">Export to Excel</button>
+    </ng-template>
+    <kendo-grid-column field="Select" title="Select" width="120" filter="boolean">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <input type="checkbox" [checked]="dataItem.Select" />
+        </ng-template>
+    </kendo-grid-column>    
+    <kendo-grid-column field="Id" title="#" width="50" [filterable]="false">
+    </kendo-grid-column>
+    <kendo-grid-column field="ASIN" title="ASIN" [style]="{'color': '#007bff','cursor':'pointer'}">
+            <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">            
+                    <div class="example-wrapper">
+                        <button kendoButton (click)="dataItem.show = !dataItem.show">{{dataItem.ASIN}}</button>
+                        <kendo-dialog title="Order details" *ngIf="dataItem.show" (close)="close(dataItem)" [minWidth]="250" [width]="450">
+                            <p>Order ID: {{ dataItem.Id }}</p>
+                            <p>ASIN: {{ dataItem.ASIN }}</p>
+                            <p>FNSKU: {{ dataItem.FNSKU }}</p>
+                            <p>Qty: {{ dataItem.InStockSupplyQuantity }}</p>
+                            <p>Store: {{ dataItem.Store }}</p>
+                            <p>Condition: {{ dataItem.Condition }}</p>
+                            <p>Store: {{ dataItem.Store }}</p>
+                            <!-- <kendo-dialog-actions>
+                                <button kendoButton (click)="close('no')">No</button>
+                                <button kendoButton (click)="close('yes')" primary="true">Yes</button>
+                            </kendo-dialog-actions> -->
+                        </kendo-dialog>
+                    </div>                                                 
+            </ng-template>               
+    </kendo-grid-column>
+    <kendo-grid-column field="FNSKU" title="FNSKU">
+    </kendo-grid-column>    
+    <!-- <kendo-grid-column field="UnitPrice" title="Unit Price" width="180" filter="numeric" format="{0:c}">
+    </kendo-grid-column> -->
+    <kendo-grid-column field="InStockSupplyQuantity" filter="numeric" title="Qty" format="#">
+    </kendo-grid-column>
+    <kendo-grid-column field="Condition" title="Condition">
+    </kendo-grid-column>    
+    <kendo-grid-column field="Store" title="Store">
+    </kendo-grid-column>        
+    <kendo-grid-column field="Date" title="date" width="240" filter="date" format="{0:d}">
+    </kendo-grid-column>    
+    <kendo-grid-excel fileName="Products.xlsx"></kendo-grid-excel>
+</kendo-grid>
+
+</div>

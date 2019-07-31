@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <ngx-mat-drp (selectedDateRangeChanged)="updateRange($event)" [options]="options" #dateRangePicker>
+            </ngx-mat-drp>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div id="GraphDatacontainer"></div>
+        </div>
+    </div>
+</div>

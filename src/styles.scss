@@ -1,0 +1,68 @@
+// Webgility Style Guide
+@import "wg-variables";
+@import "wg-functions";
+
+// mixin: font-face starts =============
+@include font-face($font-regular, assets/fonts/OpenSans-Regular, embedded-opentype);
+@include font-face($font-light, assets/fonts/OpenSans-Light, embedded-opentype);
+@include font-face($font-semibold, assets/fonts/OpenSans-Semibold, eot);
+@include font-face($font-bold, assets/fonts/OpenSans-Bold, eot);
+@include font-face($font-extrabold, assets/fonts/OpenSans-ExtraBold, eot);
+// mixin: font-face ends =============
+
+/* You can add global styles to this file, and also import other style files */
+
+html {min-height:100%;position: relative;}
+body {padding-bottom: 80px;font-family: $font-regular;}
+footer {position: absolute; bottom: 0; height: 60px;}
+
+.fw-light {
+    font-family: $font-light;
+}
+.fw-semibold {
+    font-family: $font-semibold;
+}
+.fw-bold {
+	font-family: $font-bold;
+}
+.fw-extrabold {
+	font-family: $font-extrabold;
+}
+
+// margin and padding starts =============
+// $sides: (
+//     "": "all", //$sideName: $sideValue
+//     "t": "top",
+//     "b": "bottom",
+//     "l": "left",
+//     "r": "right",
+// );
+// @each $sideName, $sideValue in $sides {
+//     @for $i from 0 through 25 {
+//         $property: if($sideName == '', '', -#{$sideValue});
+//         $space: $i * 5;
+//         $selector: #{$sideName}-#{$space};
+
+//         .m#{$selector} {
+//             margin#{$property}: #{$space}px !important;
+//         }
+//         .p#{$selector} {
+//             padding#{$property}: #{$space}px !important;
+//         }
+//     }
+// }
+// margin and padding ends =============
+
+// font-size starts =============
+@for $i from 4 to 51 {
+	$value: $i * 2;
+	.fs-#{$value}{font-size:$value+px;}
+}
+// font-size ends =============
+
+// line-height starts =============
+@for $i from 10 to 21 {
+	$value: $i/10;
+	.lh-#{$value*10}{line-height:$value;}
+}
+// line-height ends =============

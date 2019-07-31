@@ -1,0 +1,7 @@
+Parent Component:<br/><br/><br/>
+
+parent value of amount : {{amount}}<br/>
+<button (click)="deposit()">Deposit 100</button>
+
+<br/><br/><br/>
+<app-child [amount]="amount" (amountChange)="this.amount= $event"></app-child>

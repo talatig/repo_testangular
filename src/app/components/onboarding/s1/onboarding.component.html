@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col text-center">
+      <div class="stores-container" *ngIf="storeDisplay">
+        <mat-form-field>
+          <input matInput type="text" placeholder="Search Sales Channel" [(ngModel)]="searchStores">
+          <button mat-button matPrefix mat-icon-button>
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+        <!-- <mat-icon>search</mat-icon><input type="text" placeholder="Search Sales Channel" [(ngModel)]="searchStores" style="width: 50%;"> -->
+        <br/>
+
+        <div class="box" [class.highlight]="hightlightStatus[i]||i==selectedStoreIndex" *ngFor="let item of storeArr | filter:searchStores; let i = index" (click)="displayCredentialScreen(item,i)">
+          <span>{{item}}</span>
+        </div>
+    </div>   
+
+    <!-- <div class="credentials-container" *ngIf="showCredentialScreen">
+      <app-s2 [storeDisplay]="storeDisplay" [showCredentialScreen]="showCredentialScreen" [selectedStoreName]="selectedStoreName" (storeDisplayChange)="this.storeDisplay= $event" (showCredentialScreenChange)="this.showCredentialScreen= $event"></app-s2>
+    </div> -->
+
+    <!-- <div class="credentials-success-container" *ngIf="showCredentialSuccessScreen">
+        <label>Username entered for {{selectedStoreName}} is {{storeUsername}}</label><br/>
+        <label>Enter password for {{selectedStoreName}} is {{storePassword}}</label><br/> 
+        <button class="m-2" (click)="displayCredentialScreen()">Back</button>
+      </div> -->
+
+  </div>
+</div>

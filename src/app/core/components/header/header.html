@@ -1,0 +1,33 @@
+<div class="container-fluid">
+<nav class="navbar is-dark">
+    <!-- logo -->
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        <img src="assets/Webgility Logo.svg" width="250">
+      </a>
+    </div>
+
+    <!-- menu -->
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" routerLink="">Home</a>
+        <a class="navbar-item" routerLink="kendogrid">Kendo Grid</a>
+        <a class="navbar-item" routerLink="kendochart">Kendo Chart</a>                
+        <a class="navbar-item" routerLink="graph">Graph</a>
+        <a class="navbar-item" routerLink="analytics">Analytics</a>
+        <!-- <a class="navbar-item" routerLink="analytics">Analytics</a> -->
+        <button mat-button [matMenuTriggerFor]="menu">Components</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="buttons">Buttons</button>
+          <button mat-menu-item routerLink="tabs">Tabs</button>
+          <button mat-menu-item routerLink="datePicker">Date Picker</button>
+        </mat-menu>
+        <a class="navbar-item" routerLink="parentchild">Parent child example</a>
+        <a class="navbar-item" routerLink="onboarding">Onboarding</a>
+
+        <!-- <a class="navbar-item" routerLink="contact">Componenets</a>
+        <a class="navbar-item" routerLink="users">Users</a> -->
+      </div>
+    </div>
+  </nav>
+</div>

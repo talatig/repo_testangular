@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col text-center">
+
+      <form [formGroup]="myForm" (ngSubmit) = "submitForm()">
+
+          <label>Enter username for {{onboardingData.selectedStoreName}}</label><br/>
+          <input type="text" formControlName="storeName"/><br/>
+          <div *ngIf="storeName.invalid && (storeName.dirty || storeName.touched)" class="alert alert-danger">      
+            <div *ngIf="storeName.errors.required">username is required.</div>
+          </div>          
+          <!--{{myForm.controls.storeName.value}}-->                    
+        
+          <label>Enter password for {{onboardingData.selectedStoreName}}</label><br/>
+          <input type="text" formControlName="storePass" /><br/>
+          <div *ngIf="storePass.invalid && (storePass.dirty || storePass.touched)" class="alert alert-danger">      
+            <div *ngIf="storePass.errors.required">password is required.</div>
+          </div>
+          <!--{{myForm.controls.storePass.value}}-->           
+
+          <label>Are products listed in QB</label><br/>
+          <input type="radio" formControlName="productListExist" value="yes" > Yes
+          <input type="radio" formControlName="productListExist" value="no"> No<br/>          
+          <!--{{myForm.controls.productListExist.value}}-->           
+
+          <label>Select product listing</label><br/>
+          <select formControlName="productList">
+              <option *ngFor="let p of productListOptions" [ngValue]="p">{{ p }}</option>
+          </select><br/>
+          <div *ngIf="productList.invalid && (productList.dirty || productList.touched)" class="alert alert-danger">      
+            <div *ngIf="productList.errors.required">select how product is listed.</div>
+          </div>          
+          <!--{{myForm.controls.productList.value}}-->           
+
+          <button class="m-2" (click)="displayStores()">Back</button>
+          <button type="submit" [disabled]="!myForm.valid">Submit</button>
+        
+    </form>    
+
+  </div>
+</div>
